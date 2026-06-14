@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="google-site-verification" content="_VRtK8BAz5hYTS0YZi6rZMkAPFtEpA4SmQUzKjchGi4" />
     <meta
       name="description"
       content="Denis Levenko is a creator & software developer who loves Ruby, Go, Python, JavaScript, Bash, DevOps, and building for the web."
@@ -22,6 +23,7 @@
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Denis Levenko — creator & software developer" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:title"
@@ -32,6 +34,7 @@
       content="Creator & software developer into Ruby, Go, Python, JavaScript, Bash, DevOps, AI agents, and the web."
     />
     <meta name="twitter:image" content="https://denis1011101.xyz/og-image.png" />
+    <meta name="twitter:image:alt" content="Denis Levenko — creator & software developer" />
     <meta name="theme-color" media="(prefers-color-scheme: light)" content="#ffffff" />
     <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#050505" />
     <link rel="canonical" href="https://denis1011101.xyz/" />
@@ -46,335 +49,26 @@
       href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' fill='black'/%3E%3Ctext x='12' y='44' font-size='34' font-family='monospace' fill='white'%3E%26gt%3B_%3C/text%3E%3C/svg%3E"
     />
     <title>Denis Levenko | Creator & Software Developer</title>
-    <style>
-      :root {
-        color-scheme: light dark;
-        --bg: #ffffff;
-        --text: #050505;
-        --muted: #6b6b6b;
-        --line: #d8d8d8;
-        --soft: #f5f5f5;
-        --grid: rgba(0, 0, 0, 0.035);
-        --frame-bg: rgba(255, 255, 255, 0.92);
-        --panel-bg: rgba(255, 255, 255, 0.82);
+    <link rel="stylesheet" href="styles.css" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Denis Levenko",
+        "url": "https://denis1011101.xyz/",
+        "image": "https://denis1011101.xyz/og-image.png",
+        "jobTitle": "Creator & Software Developer",
+        "description": "Creator & software developer into Ruby, Go, Python, JavaScript, Bash, DevOps, AI agents, and the web.",
+        "knowsAbout": ["Ruby", "Go", "Python", "JavaScript", "Bash", "DevOps", "AI agents", "Web development"],
+        "sameAs": [
+          "https://github.com/denis1011101",
+          "https://www.linkedin.com/in/denis-levenko/",
+          "https://www.upwork.com/freelancers/~01c7e5fd461d020a0d",
+          "https://getcourt.co/",
+          "https://t.me/denis1011101"
+        ]
       }
-
-      @media (prefers-color-scheme: dark) {
-        :root {
-          --bg: #050505;
-          --text: #f3f3f3;
-          --muted: #a6a6a6;
-          --line: #2d2d2d;
-          --soft: #101010;
-          --grid: rgba(255, 255, 255, 0.06);
-          --frame-bg: rgba(8, 8, 8, 0.92);
-          --panel-bg: rgba(12, 12, 12, 0.84);
-        }
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        background-color: var(--bg);
-        background-image:
-          linear-gradient(var(--grid) 1px, transparent 1px),
-          linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-        background-size: 32px 32px;
-        color: var(--text);
-        font-family:
-          ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
-          "Courier New", monospace;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: underline;
-        text-underline-offset: 0.18em;
-      }
-
-      a:hover,
-      a:focus-visible {
-        opacity: 0.65;
-      }
-
-      .page {
-        width: min(100%, 1080px);
-        margin: 0 auto;
-        padding: 40px 20px 80px;
-      }
-
-      .frame {
-        border: 1px solid var(--text);
-        background: var(--frame-bg);
-        box-shadow: 10px 10px 0 var(--text);
-      }
-
-      .terminal-bar {
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        padding: 10px 14px;
-        border-bottom: 1px solid var(--text);
-        font-size: 0.88rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      .hero {
-        display: grid;
-        gap: 28px;
-        padding: 24px 20px 28px;
-      }
-
-      .prompt {
-        color: var(--muted);
-        margin: 0 0 12px;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        font-size: 0.88rem;
-      }
-
-      h1,
-      h2,
-      p {
-        margin: 0;
-      }
-
-      h1 {
-        font-size: clamp(2rem, 5vw, 4.6rem);
-        line-height: 0.98;
-        text-transform: lowercase;
-      }
-
-      .cursor {
-        display: inline-block;
-        animation: blink 0.9s steps(1, end) infinite;
-      }
-
-      .hero-copy {
-        max-width: 44rem;
-        font-size: 1rem;
-        line-height: 1.8;
-      }
-
-      .hero-copy strong {
-        font-weight: 700;
-      }
-
-      .links-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 14px 20px;
-        padding-top: 4px;
-        font-size: 0.95rem;
-      }
-
-      .links-row span {
-        color: var(--muted);
-      }
-
-      .section {
-        padding: 22px 20px 28px;
-        border-top: 1px solid var(--text);
-      }
-
-      .section-head {
-        margin-bottom: 18px;
-      }
-
-      .section-head h2 {
-        font-size: 1.15rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      .section-head p {
-        margin-top: 6px;
-        color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .stats {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 12px;
-      }
-
-      .stat-card {
-        border: 1px solid var(--text);
-        padding: 16px 14px;
-        background: var(--soft);
-        min-height: 132px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-      }
-
-      .stat-value {
-        font-size: clamp(2rem, 4vw, 3rem);
-        line-height: 1;
-      }
-
-      .stat-label {
-        color: var(--muted);
-        font-size: 0.92rem;
-        line-height: 1.5;
-      }
-
-      .grid-two {
-        display: grid;
-        grid-template-columns: 1.3fr 0.9fr;
-        gap: 18px;
-      }
-
-      .panel {
-        border: 1px solid var(--line);
-        padding: 16px;
-        background: var(--panel-bg);
-      }
-
-      .panel-title {
-        margin-bottom: 14px;
-        font-size: 0.9rem;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-      }
-
-      .stack-list,
-      .signal-list,
-      .interest-list {
-        display: grid;
-        gap: 12px;
-      }
-
-      .stack-row,
-      .signal-row {
-        display: grid;
-        grid-template-columns: 120px 1fr auto;
-        align-items: center;
-        gap: 12px;
-      }
-
-      .track {
-        position: relative;
-        height: 14px;
-        border: 1px solid var(--text);
-        overflow: hidden;
-        background:
-          repeating-linear-gradient(
-            90deg,
-            transparent 0,
-            transparent 10px,
-            var(--grid) 10px,
-            var(--grid) 11px
-          );
-      }
-
-      .fill {
-        height: 100%;
-        background: var(--text);
-      }
-
-      .signal-row {
-        grid-template-columns: 132px 1fr;
-        align-items: start;
-      }
-
-      .signal-row strong {
-        display: inline-block;
-        margin-bottom: 2px;
-      }
-
-      .signal-row p,
-      .interest-list p {
-        color: var(--muted);
-        line-height: 1.65;
-      }
-
-      .interest-list article {
-        padding: 14px 0;
-        border-top: 1px solid var(--line);
-      }
-
-      .interest-list article:first-child {
-        padding-top: 0;
-        border-top: 0;
-      }
-
-      .interest-list strong {
-        display: block;
-        margin-bottom: 6px;
-      }
-
-      .footer {
-        padding: 20px;
-        border-top: 1px solid var(--text);
-        color: var(--muted);
-        font-size: 0.9rem;
-        line-height: 1.7;
-      }
-
-      @keyframes blink {
-        0%,
-        49% {
-          opacity: 1;
-        }
-
-        50%,
-        100% {
-          opacity: 0;
-        }
-      }
-
-      @media (max-width: 860px) {
-        .stats,
-        .grid-two {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .page {
-          padding: 20px 14px 48px;
-        }
-
-        .frame {
-          box-shadow: 6px 6px 0 var(--text);
-        }
-
-        .hero,
-        .section,
-        .footer {
-          padding-left: 16px;
-          padding-right: 16px;
-        }
-
-        .stats,
-        .grid-two,
-        .stack-row,
-        .signal-row {
-          grid-template-columns: 1fr;
-        }
-
-        .stat-card {
-          min-height: auto;
-          gap: 12px;
-        }
-
-        .track {
-          height: 12px;
-        }
-      }
-    </style>
+    </script>
   </head>
   <body>
     <main class="page">
@@ -384,6 +78,7 @@
           <span>html + css only</span>
         </div>
 
+        <!-- ===== hero ===== -->
         <header class="hero">
           <div>
             <p class="prompt">&gt; boot profile</p>
@@ -411,6 +106,7 @@
           </div>
         </header>
 
+        <!-- ===== snapshot (stats) ===== -->
         <section class="section" aria-labelledby="snapshot-title">
           <div class="section-head">
             <h2 id="snapshot-title">&gt; snapshot</h2>
@@ -423,20 +119,17 @@
               <p class="stat-label">Years in IT and a life spent building for the web.</p>
             </article>
             <article class="stat-card">
-              <div class="stat-value">1.9K</div>
-              <p class="stat-label">Organic impressions on GetCourt in 6 months, zero ad spend.</p>
+              <div class="stat-value">7.95K</div>
+              <p class="stat-label">Organic impressions on GetCourt, zero ad spend.</p>
             </article>
             <article class="stat-card">
               <div class="stat-value">5</div>
               <p class="stat-label">Core languages I build with daily: Ruby, Go, Python, JS, Bash.</p>
             </article>
-            <article class="stat-card">
-              <div class="stat-value">1</div>
-              <p class="stat-label">Solo-built product live in production.</p>
-            </article>
           </div>
         </section>
 
+        <!-- ===== stack (language affinity + build profile) ===== -->
         <section class="section" aria-labelledby="stack-title">
           <div class="section-head">
             <h2 id="stack-title">&gt; stack.dat</h2>
@@ -447,30 +140,59 @@
             <div class="panel">
               <div class="panel-title">language affinity</div>
               <div class="stack-list">
-                <div class="stack-row" aria-label="Ruby affinity: 96 percent. Core language.">
+                <div class="stack-row stack-row--lang" aria-label="Ruby affinity: 91 percent. Core language.">
                   <span>Ruby</span>
-                  <div class="track" aria-hidden="true"><div class="fill" style="width: 96%"></div></div>
-                  <span>96%</span>
+                  <div class="track" aria-hidden="true"><div class="fill" style="width: 91%"></div></div>
+                  <span>91%</span>
+                  <span class="stack-links">
+                    <a class="stack-link" href="https://github.com/denis1011101/getcourt" target="_blank" rel="noopener" aria-label="Ruby project: getcourt on GitHub">getcourt ↗</a>
+                    <a class="stack-link" href="https://github.com/denis1011101/wedding_fm" target="_blank" rel="noopener" aria-label="Ruby project: wedding_fm on GitHub">wedding_fm ↗</a>
+                    <a class="stack-link" href="https://github.com/DenisDenis9331/aireview" target="_blank" rel="noopener" aria-label="Ruby project: aireview on GitHub">aireview ↗</a>
+                  </span>
                 </div>
-                <div class="stack-row" aria-label="Go affinity: 82 percent. Fast and practical.">
+                <div class="stack-row stack-row--lang" aria-label="Go affinity: 82 percent. Fast and practical.">
                   <span>Go</span>
                   <div class="track" aria-hidden="true"><div class="fill" style="width: 82%"></div></div>
                   <span>82%</span>
+                  <a class="stack-link" href="https://github.com/denis1011101/wallchart26" target="_blank" rel="noopener" aria-label="Go project: wallchart26 on GitHub">wallchart26 ↗</a>
                 </div>
-                <div class="stack-row" aria-label="Python affinity: 86 percent. Sharp and versatile.">
+                <div class="stack-row stack-row--lang" aria-label="Python affinity: 79 percent. Sharp and versatile.">
                   <span>Python</span>
-                  <div class="track" aria-hidden="true"><div class="fill" style="width: 86%"></div></div>
-                  <span>86%</span>
-                </div>
-                <div class="stack-row" aria-label="JavaScript affinity: 79 percent. Web native.">
-                  <span>JavaScript</span>
                   <div class="track" aria-hidden="true"><div class="fill" style="width: 79%"></div></div>
                   <span>79%</span>
+                  <a class="stack-link" href="https://github.com/DenisDenis9331/image_comparison_system/tree/feature/image_comparsion_system_with_go_python_and_milvus" target="_blank" rel="noopener" aria-label="Python project: image comparison system on GitHub">image_comparison ↗</a>
                 </div>
-                <div class="stack-row" aria-label="Bash affinity: 88 percent. Shell-powered automation.">
+                <div class="stack-row stack-row--lang" aria-label="JavaScript affinity: 69 percent. Web native.">
+                  <span>JavaScript</span>
+                  <div class="track" aria-hidden="true"><div class="fill" style="width: 69%"></div></div>
+                  <span>69%</span>
+                </div>
+                <div class="stack-row stack-row--lang" aria-label="Bash affinity: 72 percent. Shell-powered automation.">
                   <span>Bash</span>
-                  <div class="track" aria-hidden="true"><div class="fill" style="width: 88%"></div></div>
-                  <span>88%</span>
+                  <div class="track" aria-hidden="true"><div class="fill" style="width: 72%"></div></div>
+                  <span>72%</span>
+                </div>
+              </div>
+
+              <div class="panel-title stack-subtitle">ai</div>
+              <div class="stack-list">
+                <div class="stack-row" aria-label="AI project: image comparison system, built with Go, Python and Milvus">
+                  <span>Image search</span>
+                  <span class="stack-tags" aria-hidden="true">Go · Python · Milvus</span>
+                  <span></span>
+                  <a class="stack-link" href="https://github.com/DenisDenis9331/image_comparison_system/tree/feature/image_comparsion_system_with_go_python_and_milvus" target="_blank" rel="noopener" aria-label="AI project: image comparison system on GitHub">image_comparison ↗</a>
+                </div>
+                <div class="stack-row" aria-label="AI project: aireview, AI-powered code review built with Ruby">
+                  <span>AI review</span>
+                  <span class="stack-tags" aria-hidden="true">Ruby · Gemini</span>
+                  <span></span>
+                  <a class="stack-link" href="https://github.com/DenisDenis9331/aireview" target="_blank" rel="noopener" aria-label="AI project: aireview on GitHub">aireview ↗</a>
+                </div>
+                <div class="stack-row" aria-label="AI project: GetCourt, with AI-powered features, built with Ruby">
+                  <span>GetCourt</span>
+                  <span class="stack-tags" aria-hidden="true">Ruby · Gemini</span>
+                  <span></span>
+                  <a class="stack-link" href="https://github.com/denis1011101/getcourt" target="_blank" rel="noopener" aria-label="AI project: GetCourt">getcourt ↗</a>
                 </div>
               </div>
             </div>
@@ -507,6 +229,7 @@
           </div>
         </section>
 
+        <!-- ===== history ===== -->
         <section class="section" aria-labelledby="history-title">
           <div class="section-head">
             <h2 id="history-title">&gt; history.log</h2>
@@ -531,6 +254,7 @@
           </div>
         </section>
 
+        <!-- ===== interests ===== -->
         <section class="section" aria-labelledby="interests-title">
           <div class="section-head">
             <h2 id="interests-title">&gt; interests.log</h2>
@@ -569,6 +293,7 @@
           </div>
         </section>
 
+        <!-- ===== links ===== -->
         <section class="section" aria-labelledby="links-title">
           <div class="section-head">
             <h2 id="links-title">&gt; links.out</h2>
@@ -579,7 +304,7 @@
             <div class="signal-list">
               <div class="signal-row">
                 <strong>GetCourt</strong>
-                <p><a href="https://getcourt.co/" target="_blank" rel="noopener noreferrer">getcourt.co</a> — flagship project. 1.9K impressions, 24 clicks in 6 months — growing organic traffic with zero ad spend.</p>
+                <p><a href="https://getcourt.co/" target="_blank" rel="noopener noreferrer">getcourt.co</a> — flagship project. 7.95K impressions, 161 clicks — growing organic traffic with zero ad spend.</p>
               </div>
               <div class="signal-row">
                 <strong>GitHub</strong>
