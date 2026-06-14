@@ -223,9 +223,9 @@ h1 {
   gap: 12px;
 }
 
-/* language affinity rows: project links drop to their own line under the bar */
+/* language affinity rows: bar stretches full width, project links drop to their own line under it */
 .stack-row--lang {
-  grid-template-columns: 120px minmax(120px, 200px) auto;
+  grid-template-columns: 120px 1fr auto;
   row-gap: 6px;
 }
 
