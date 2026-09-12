@@ -1,0 +1,46 @@
+name: site
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install PDF tools
+        run: sudo apt-get install -y --no-install-recommends poppler-utils libimage-exiftool-perl
+
+      - name: Assemble the site
+        run: |
+          mkdir -p _site
+          cp index.html styles.css og-image.png og-image.svg robots.txt sitemap.xml CNAME _site/
+
+      - name: Render the CV to PDF
+        run: |
+          google-chrome --headless=new --disable-gpu --no-sandbox \
+            --no-pdf-header-footer \
+            --print-to-pdf=_site/cv.pdf \
+            "file://$PWD/index.html"
+          exiftool -overwrite_original \
+            -Author="Denis Levenko" \
+            -Title="Denis Levenko — Backend Engineer (Ruby on Rails, Go) | CV" \
+            _site/cv.pdf
+
+      - name: Check the PDF
+        run: |
+          pdfinfo _site/cv.pdf
+          pages=$(pdfinfo _site/cv.pdf | awk '/^Pages:/ {print $2}')
+          test "$pages" -le 2 || { echo "PDF is $pages pages, expected at most 2"; exit 1; }
+          pdfinfo _site/cv.pdf | grep -q '^Author:.*Denis Levenko' || { echo "Author metadata missing"; exit 1; }
+          pdftotext _site/cv.pdf - > cv.txt
+          grep -q 'denisdenis9331@gmail.com' cv.txt || { echo "email is broken in the text layer"; exit 1; }
+          grep -q '^Experience$' cv.txt || { echo "plain Experience heading missing"; exit 1; }
+          ! grep -q '\.log\|▸' cv.txt || { echo "screen decoration leaked into the PDF"; exit 1; }
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
