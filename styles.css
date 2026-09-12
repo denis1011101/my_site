@@ -225,39 +225,19 @@ h1 {
   letter-spacing: 0.08em;
 }
 
+/* terminal decoration lives here, not in the heading text */
+.section-head h2::before {
+  content: "> ";
+}
+
+.section-head h2::after {
+  content: attr(data-ext);
+}
+
 .section-head p {
   margin-top: 6px;
   color: var(--muted);
   font-size: 0.92rem;
-}
-
-/* ===== highlights (stats grid) ===== */
-.stats {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.stat-card {
-  border: 1px solid var(--text);
-  padding: 16px 14px;
-  background: var(--soft);
-  min-height: 132px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.stat-value {
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
-  line-height: 1;
-}
-
-.stat-label {
-  color: var(--muted);
-  font-size: 0.88rem;
-  line-height: 1.5;
 }
 
 /* ===== cv layout: main column + sidebar ===== */
@@ -507,10 +487,6 @@ kbd {
     grid-template-columns: 1fr;
     gap: 32px;
   }
-
-  .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
 }
 
 @media (max-width: 640px) {
@@ -535,14 +511,9 @@ kbd {
     padding-right: 0;
   }
 
-  .stats,
   .meta-row,
   .signal-row {
     grid-template-columns: 1fr;
-  }
-
-  .stat-card {
-    min-height: auto;
   }
 
   .job-head {
@@ -559,7 +530,7 @@ kbd {
 @media print {
   @page {
     size: A4;
-    margin: 14mm 12mm;
+    margin: 11mm 12mm;
   }
 
   :root {
@@ -635,37 +606,71 @@ kbd {
     padding-bottom: 3px;
   }
 
-  /* the "> " prefix is terminal decoration, not CV content */
-  .section-head h2::first-line {
-    letter-spacing: 0.08em;
+  /* decoration and case changes end up in the PDF text layer — keep the
+     printed headings plain so resume parsers read "Experience", not
+     "> EXPERIENCE.LOG" */
+  .section-head h2::before,
+  .section-head h2::after {
+    content: none;
+  }
+
+  h1,
+  .hero-role,
+  .section-head h2,
+  .panel-title,
+  .meta-item dt,
+  .job-key {
+    text-transform: none;
+  }
+
+  .prompt,
+  .panel--screen,
+  .section--screen {
+    display: none;
+  }
+
+  /* one column: a sidebar next to the experience list interleaves
+     with it when the PDF is read line by line */
+  .cv-layout,
+  .cv-side {
+    display: block;
+  }
+
+  .cv-side {
+    margin-top: 10px;
+  }
+
+  .panel + .panel {
+    margin-top: 6px;
+  }
+
+  /* contacts in one line, email never wrapped */
+  .meta-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+    padding-top: 8px;
+  }
+
+  .meta-item {
+    display: flex;
+    gap: 5px;
+    align-items: baseline;
+  }
+
+  .meta-item dt {
+    margin: 0;
+    font-size: 8pt;
+  }
+
+  .meta-item dd {
+    font-size: 9pt;
+    overflow-wrap: normal;
+    white-space: nowrap;
   }
 
   .section-head p {
     font-size: 8.5pt;
-  }
-
-  .cv-layout {
-    grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.85fr);
-    gap: 18px;
-  }
-
-  .stats {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-  }
-
-  .stat-card {
-    min-height: auto;
-    padding: 8px;
-    border: 1px solid #000;
-  }
-
-  .stat-value {
-    font-size: 15pt;
-  }
-
-  .stat-label {
-    font-size: 7.5pt;
   }
 
   .panel {
@@ -677,13 +682,93 @@ kbd {
   .job-line,
   .skill-group p {
     font-size: 9pt;
-    line-height: 1.5;
+    line-height: 1.45;
   }
+
+  /* a positioned marker becomes its own line in the text layer;
+     a plain disc stays attached to the sentence */
+  .bullets {
+    list-style: disc;
+    padding-left: 14px;
+    margin-top: 5px;
+    gap: 2px;
+  }
+
+  .bullets li {
+    padding-left: 2px;
+  }
+
+  .bullets li::before {
+    content: none;
+  }
+
+  .links-row span {
+    display: none;
+  }
+
+  .links-row {
+    gap: 4px 14px;
+    font-size: 9pt;
+  }
+
+  .job-group {
+    padding-top: 10px;
+    margin-top: 10px;
+  }
+
+  .job,
+  .job-group .job,
+  .job-group .job:first-of-type {
+    padding-top: 6px;
+    margin-top: 6px;
+  }
+
+  .job-head {
+    margin-bottom: 4px;
+  }
+
+  .section-head {
+    margin-bottom: 8px;
+  }
+
+  .section--flush + .section--flush {
+    margin-top: 10px;
+  }
+
+  /* "Languages: Ruby, Go, …" on one line — half the height, and the
+     label stays attached to its list in the text layer */
+  .skill-group {
+    padding-top: 3px;
+    margin-top: 3px;
+    border-top: 0;
+  }
+
+  .skill-group h3 {
+    display: inline;
+    margin: 0 4px 0 0;
+    font-size: 9pt;
+  }
+
+  .skill-group h3::after {
+    content: ":";
+  }
+
+  .skill-group p {
+    display: inline;
+  }
+
+  .panel {
+    padding: 6px 10px;
+  }
+
+  .panel-title {
+    margin-bottom: 4px;
+  }
+
 
   /* keep entries whole across page breaks */
   .job,
   .panel,
-  .stat-card,
   .signal-row {
     break-inside: avoid;
     page-break-inside: avoid;
@@ -696,6 +781,19 @@ kbd {
 
   .section-head,
   .group-head {
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  /* Chrome honours break-after only on the heading itself, not on a
+     wrapper around it — so the whole head is kept together and the
+     rule goes on the h2 */
+  .section-head {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .section-head h2 {
     break-after: avoid;
     page-break-after: avoid;
   }
