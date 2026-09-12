@@ -669,8 +669,9 @@ kbd {
     white-space: nowrap;
   }
 
+  /* section taglines are screen copy; on paper they only cost lines */
   .section-head p {
-    font-size: 8.5pt;
+    display: none;
   }
 
   .panel {
