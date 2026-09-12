@@ -111,6 +111,7 @@ p {
   border: 1px solid var(--text);
   padding: 3px 10px;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .bar-action:hover,
